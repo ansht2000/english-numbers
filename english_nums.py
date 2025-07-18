@@ -25,8 +25,6 @@ def words_to_numbers(input: str) -> int:
     }
     words = input.replace(",", "").replace("-", " ").lower().split()
     words = [w for w in words if (w != "and" and w != "a")]
-    # could be unecessary to parse lone scale numbers
-    # TODO: figure out if you wanna keep this
     negative = False
     if words[0] in scales:
         words.insert(0, "one")
@@ -53,12 +51,8 @@ def words_to_numbers(input: str) -> int:
         current = 0
     return -total if negative else total
 
-    
-def main() -> None:
+if __name__ == "__main__":
     while True:
         num_in = input("Enter an english number written out in words: ")
         num = words_to_numbers(num_in)
         print(num)
-
-if __name__ == "__main__":
-    main()
